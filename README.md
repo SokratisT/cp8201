@@ -1,10 +1,10 @@
-# cp8201
-CP8201 Project repo for the fall 2015 term
+# cp8202
+CP8202 - Advnaced Software Engineering Project repo for the fall 2015 term
 
 
 
 group members:
 
-* Jorge Lopez
-* Sorrur Samad
-* Sokratis Tsakiltsidis
+* Jorge
+* Sorrur
+* Sokratis
