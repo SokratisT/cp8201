@@ -28,17 +28,10 @@ def get_s2(var1):
 
 # POST example
 @app.route('/softEng/api/v1', methods=['POST'])
-def create_task():
-    if not request.json or not 'title' in request.json:
+def add_in_table():
+    if not request.json:
         abort(400)
-    task = {
-        'id': tasks[-1]['id'] + 1,
-        'title': request.json['title'],
-        'description': request.json.get('description', ""),
-        'done': False
-    }
-    tasks.append(task)
-    return jsonify({'task': task}), 201
+    return "success", 201
 
 @app.errorhandler(404)
 def handle_errors(error):
