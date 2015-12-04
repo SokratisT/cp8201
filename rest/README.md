@@ -1,8 +1,8 @@
 ### RESTfull services implementation
 
 ###### Requirements:
-* python
-* flask framework  
+* Python
+* Flask framework  
     * http://flask.pocoo.org/
     * to install execute: `pip install flask`
 
@@ -14,7 +14,8 @@ After the server is running you can:
 * invoke it from terminal using [curl](http://man.cx/curl)
 
 ###### Examples:
-Some more examples and features implemented
+Some more examples of the features implemented.  
+Execute the following commands after the server side is running:
     
 `curl -i http://localhost:5000`  
 This command sends a GET request and the server returns the String "Hello World!"  
