@@ -23,5 +23,5 @@ This command sends a GET request
 This command sends a GET request of a specific url_path  
 `curl -i http://localhost:<PORT>/<url_path> -X DELETE -v`  
  This command sends a DELETE request of a specific url_path  
- `curl -i http://localhost:<PORT>/<url_path> -d "<attr1>=<value1>&<attr2>=<value2>" -X POST -v`
+ `curl -i http://localhost:<PORT>/<url_path> -d "<attr1>=<value1>&<attr2>=<value2>" -X POST -v`  
  This command sends a POST request of a specific url_path with the data specified after the -d option, separated by an ampersand "&"
