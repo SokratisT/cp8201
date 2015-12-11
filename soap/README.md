@@ -7,5 +7,5 @@
     * to install execute: `pip install pysimplesoap`
 
 ###### Execution:
-1. To test locally, start the server by executing: `python server_adder_soap.py`
-2. After the server is running, execute the client (from another terminal window): `python client_adder_soap.py`
+1. To test locally, navigate to the folder of your preference and start the server by executing: `python <server_file_name>.py`
+2. After the server is running, execute the client (from another terminal window): `python <client_file_name>.py`
