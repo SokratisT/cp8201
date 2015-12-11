@@ -1,0 +1,108 @@
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.3 Python/2.7.6
+Date: Tue, 08 Dec 2015 16:56:12 GMT
+Content-type: text/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="my_dispatcher" targetNamespace="http://example.com/sample.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.com/sample.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+    
+	<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+	
+
+    
+	<wsdl:types>
+		
+       
+		<xsd:schema elementFormDefault="qualified" targetNamespace="http://example.com/sample.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			
+       
+			<xsd:element name="amean">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="a" type="xsd:float"/>
+						<xsd:element name="b" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ameanResponse">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="AddResult1" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="rmses">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="a" type="xsd:float"/>
+						<xsd:element name="b" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="rmsesResponse">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="AddResult" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		
+    
+	</wsdl:types>
+	
+
+
+	<wsdl:message name="ameanInput">
+		<wsdl:part element="tns:amean" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="ameanOutput">
+		<wsdl:part element="tns:ameanResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="rmsesInput">
+		<wsdl:part element="tns:rmses" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="rmsesOutput">
+		<wsdl:part element="tns:rmsesResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="my_dispatcherPortType">
+		<wsdl:operation name="amean">
+			<wsdl:documentation>Calculate Mean of two values</wsdl:documentation>
+			<wsdl:input message="tns:ameanInput"/>
+			<wsdl:output message="tns:ameanOutput"/>
+		</wsdl:operation>
+		<wsdl:operation name="rmses">
+			<wsdl:documentation>Calculate RMSE of two values</wsdl:documentation>
+			<wsdl:input message="tns:rmsesInput"/>
+			<wsdl:output message="tns:rmsesOutput"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="my_dispatcherBinding" type="tns:my_dispatcherPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="amean">
+			<soap:operation soapAction="http://localhost:8010/amean" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="rmses">
+			<soap:operation soapAction="http://localhost:8010/rmses" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="my_dispatcherService">
+		<wsdl:documentation></wsdl:documentation>
+		<wsdl:port binding="tns:my_dispatcherBinding" name="my_dispatcher">
+			<soap:address location="http://localhost:8010/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

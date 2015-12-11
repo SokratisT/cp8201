@@ -1,0 +1,107 @@
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.3 Python/2.7.6
+Date: Tue, 08 Dec 2015 17:50:38 GMT
+Content-type: text/xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="my_dispatcher" targetNamespace="http://example.com/sample.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.com/sample.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+    
+	<wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"/>
+	
+
+    
+	<wsdl:types>
+		
+       
+		<xsd:schema elementFormDefault="qualified" targetNamespace="http://example.com/sample.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+			
+       
+			<xsd:element name="Bmi">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="h" type="xsd:float"/>
+						<xsd:element name="w" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BmiResponse">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="AddResult" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BmiC">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="r" type="xsd:float"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BmiCResponse">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element name="CatResult" type="xsd:string"/>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+		
+    
+	</wsdl:types>
+	
+
+
+	<wsdl:message name="BmiInput">
+		<wsdl:part element="tns:Bmi" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="BmiOutput">
+		<wsdl:part element="tns:BmiResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="BmiCInput">
+		<wsdl:part element="tns:BmiC" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="BmiCOutput">
+		<wsdl:part element="tns:BmiCResponse" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="my_dispatcherPortType">
+		<wsdl:operation name="Bmi">
+			<wsdl:documentation>Calculating BMI</wsdl:documentation>
+			<wsdl:input message="tns:BmiInput"/>
+			<wsdl:output message="tns:BmiOutput"/>
+		</wsdl:operation>
+		<wsdl:operation name="BmiC">
+			<wsdl:documentation>Calculating BMI</wsdl:documentation>
+			<wsdl:input message="tns:BmiCInput"/>
+			<wsdl:output message="tns:BmiCOutput"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="my_dispatcherBinding" type="tns:my_dispatcherPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="Bmi">
+			<soap:operation soapAction="http://localhost:8012/Bmi" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="BmiC">
+			<soap:operation soapAction="http://localhost:8012/BmiC" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="my_dispatcherService">
+		<wsdl:documentation></wsdl:documentation>
+		<wsdl:port binding="tns:my_dispatcherBinding" name="my_dispatcher">
+			<soap:address location="http://localhost:8012/"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
