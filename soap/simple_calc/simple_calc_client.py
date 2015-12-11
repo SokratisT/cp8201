@@ -15,10 +15,19 @@ var2 = raw_input("Please give the second number to be added: ")
 
 print "\nCalling the Service...\n"
 
-# call the remote method
-response = client.Adder( a = var1, b = var2)
+# call the remote services
+response1 = client.Add(a = var1, b = var2)
+response2 = client.Sub(a = var1, b = var2)
+response3 = client.Mul(a = var1, b = var2)
+response4 = client.Div(a = var1, b = var2)
 
 # extract and convert the returned value
-result = response.AddResult
+result1 = response1.AddResult
+result2 = response2.SubResult
+result3 = response3.MulResult
+result4 = response4.DivResult
 
-print "The result is: ",  int(result)
+print "\nAddition: ",  int(result1)
+print "Subtraction: ",  int(result2)
+print "Multiplication: ",  int(result3)
+print "Division: ",  str(result4)
