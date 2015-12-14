@@ -14,5 +14,7 @@ Since the project was not meant to test our skills in database administration we
 * department – department that the student is enrolled
 * status – current status of the student
 
+The service allows for basic operations on the student's registry using all types of requests: GET, POST, PUT and DELETE. The operations allowed are the following: see the entire registry, see a specifi entry by student ID, update a record, add a new record and delete a record.
+
 ####Service composition
 The composition was succeeded by calling the analytics service, with the required parameters, every time the primary service (Computer_Science_Registry) is invoked. The data analytics service, provides a user interface that we can access and monitor the main service usage.
