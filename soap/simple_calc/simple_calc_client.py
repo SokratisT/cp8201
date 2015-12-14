@@ -6,12 +6,12 @@ client = SoapClient(
     action = 'http://localhost:8008/', # SOAPAction
     namespace = "http://example.com/sample.wsdl", 
     soap_ns='soap',
-    trace = True,
+    trace = False,
     ns = False)
 
 #ask user for input
-var1 = raw_input("Please give the first number to be added: ")
-var2 = raw_input("Please give the second number to be added: ")
+var1 = raw_input("Please give the first number: ")
+var2 = raw_input("Please give the second number: ")
 
 print "\nCalling the Service...\n"
 
@@ -30,4 +30,4 @@ result4 = response4.DivResult
 print "\nAddition: ",  int(result1)
 print "Subtraction: ",  int(result2)
 print "Multiplication: ",  int(result3)
-print "Division: ",  str(result4)
+print "Division: ",  float(result4)

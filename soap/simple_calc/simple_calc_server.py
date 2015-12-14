@@ -15,12 +15,12 @@ def multiplier(a,b):
 
 def divider(a,b):
     "Divide two numbers"
-    return str(a/b)
+    return float(a/b)
 
 dispatcher = SoapDispatcher(
     'my_dispatcher',
     location = "http://localhost:8008/",
-    action = 'http://localhost:8008/', # SOAPAction
+    action = 'http://localhost:8008/',
     namespace = "http://example.com/sample.wsdl", prefix="ns0",
     trace = True,
     ns = True)
@@ -39,8 +39,8 @@ dispatcher.register_function('Mul', multiplier,
     args={'a': int,'b': int})
 
 dispatcher.register_function('Div', divider,
-    returns={'DivResult': str},
-    args={'a': int,'b': int})
+    returns={'DivResult': float},
+    args={'a': float,'b': float})
 
 print "Starting server..."
 httpd = HTTPServer(("", 8008), SOAPHandler)
