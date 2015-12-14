@@ -7,4 +7,5 @@ group members:
 
 * Jorge
 * Sorrur
+* Jaspal
 * Sokratis
